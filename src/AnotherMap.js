@@ -7,7 +7,7 @@ import ClusterMarker from "./ClusterMarker";
 
 const MAP = {
   defaultZoom: 12,
-  defaultCenter: { lat: 1.283692, lng: 103.846772 },
+  defaultCenter: { lat: 1.35, lng: 103.82 },
   options: {
     // styles: null,
     maxZoom: 19
@@ -42,7 +42,7 @@ export default class AnotherMap extends Component {
     this.setState({
       taxiCount: data.features[0].properties.taxi_count,
       allTaxiCoordinates: allTaxiCoordGeo,
-      clusterFakeData: allTaxiCoordGeo
+      // clusterFakeData: allTaxiCoordGeo
       // [
       //   { lng: 103.61462, lat: 1.25031 },
       //   { lng: 103.62201, lat: 1.28052 },
@@ -62,7 +62,7 @@ export default class AnotherMap extends Component {
     const clusters = supercluster(this.state.allTaxiCoordinates, {
       minZoom: 0,
       maxZoom: 16,
-      radius: 60
+      radius: 120
     });
     return clusters(this.state.mapOptions);
   };
@@ -112,7 +112,7 @@ export default class AnotherMap extends Component {
               return <SimpleMarker key={i} lat={item.lat} lng={item.lng} />;
             }
 
-            return <ClusterMarker key={i} lat={item.lat} lng={item.lng} />;
+            return <ClusterMarker key={i} lat={item.lat} lng={item.lng} text={item.numPoints} />;
           })}
         </GoogleMap>
       </div>
