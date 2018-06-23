@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import {bootstrapURLKeys} from './config';
 
 const MyGreatPlaceWithHover = ({ text }) => 
     <div className="marker">{text}</div>;
@@ -18,7 +19,7 @@ class MyMap extends Component {
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: `AIzaSyAn5Nt8e_rYahYmraxZSc5quaS0h4RfNwI` }}
+          bootstrapURLKeys={{ key: bootstrapURLKeys }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           

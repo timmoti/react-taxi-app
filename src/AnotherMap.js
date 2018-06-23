@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleMap from "google-map-react";
 import supercluster from "points-cluster";
 // import supercluster from "supercluster";
+import {bootstrapURLKeys} from './config';
 import SimpleMarker from "./SimpleMarker";
 import ClusterMarker from "./ClusterMarker";
 
@@ -100,7 +101,7 @@ export default class AnotherMap extends Component {
     return (
       <div style={{ height: "100vh", width: "100%" }}>
         <GoogleMap
-          bootstrapURLKeys={{ key: `AIzaSyAn5Nt8e_rYahYmraxZSc5quaS0h4RfNwI` }}
+          bootstrapURLKeys={{ key: bootstrapURLKeys }}
           zoom={this.state.mapOptions.zoom}
           center={this.state.mapOptions.center}
           // options={this.state.mapOptions.styles}
