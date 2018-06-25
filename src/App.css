@@ -1,5 +1,5 @@
-.simple-marker {
-  background-image: url('./simpleMarker.svg');
+.marker-simple {
+  background-image: url('./markerSimple.svg');
   background-repeat: no-repeat;
   position: absolute;
   cursor: pointer;
@@ -12,8 +12,21 @@
   margin: 0;
   padding: 0;
 }
-
-.cluster-marker {
+.marker-here {
+  background-image: url('./markerHere.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+  background-size: contain;
+  width: 49px;
+  height: 64px;
+  top: -49px;
+  left: -32px;
+  transform-origin: -24.5px;
+  margin: 0;
+  padding: 0;
+}
+.marker-cluster {
   position: absolute;
   cursor: pointer;
   width: 40px;
@@ -31,3 +44,5 @@
   border-radius: 50%; 
   transform: translate(-50%, -50%);
 }
+
+

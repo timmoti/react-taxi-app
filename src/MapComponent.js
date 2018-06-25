@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import GoogleMap from "google-map-react";
 import supercluster from "points-cluster";
 // import supercluster from "supercluster";
-import SimpleMarker from "./SimpleMarker";
-import ClusterMarker from "./ClusterMarker";
+import MarkerSimple from "./MarkerSimple";
+import MarkerCluster from "./MarkerCluster";
+import MarkerHere from "./MarkerHere";
 
 export default class MapComponent extends Component {
   constructor(props) {
@@ -80,11 +81,10 @@ export default class MapComponent extends Component {
         >
           {this.state.clusters.map((item, i) => {
             if (item.numPoints === 1) {
-              return <SimpleMarker key={i} lat={item.lat} lng={item.lng} />;
+              return <MarkerSimple key={i} lat={item.lat} lng={item.lng} />;
             }
-
             return (
-              <ClusterMarker
+              <MarkerCluster
                 key={i}
                 lat={item.lat}
                 lng={item.lng}
@@ -92,6 +92,12 @@ export default class MapComponent extends Component {
               />
             );
           })}
+
+          <MarkerHere
+            lat={this.props.mapOptions.center.lat}
+            lng={this.props.mapOptions.center.lng}
+            bSearched={this.props.bSearched}
+          />
         </GoogleMap>
       </div>
     );

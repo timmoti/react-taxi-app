@@ -16,13 +16,10 @@ export default class LocationSearchInput extends Component {
     super(props);
     this.state = {
       address: "",
+      bSearched: false,
       mapOptions: {
         center: { lat: 1.35, lng: 103.82 },
         zoom: 12
-      },
-      options: {
-        // styles: null,
-        maxZoom: 19
       }
     };
   }
@@ -36,6 +33,7 @@ export default class LocationSearchInput extends Component {
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         this.setState({
+          bSearched: true,
           mapOptions: {
             center: latLng,
             zoom: 17
@@ -89,7 +87,10 @@ export default class LocationSearchInput extends Component {
           )}
         </PlacesAutocomplete>
 
-        <MapComponent mapOptions={this.state.mapOptions} />
+        <MapComponent
+          mapOptions={this.state.mapOptions}
+          bSearched={this.state.bSearched}
+        />
       </div>
     );
   }
