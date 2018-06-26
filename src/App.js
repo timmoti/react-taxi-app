@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-// import { GoogleApiWrapper } from "google-maps-react";
-import TopBar from "./TopBar";
 import "./App.css";
+import TaxiApp from "./TaxiApp";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <TopBar />
+        <TaxiApp />
       </div>
     );
   }

@@ -6,10 +6,6 @@ import MarkerSimple from "./MarkerSimple";
 import MarkerCluster from "./MarkerCluster";
 import MarkerHere from "./MarkerHere";
 
-// const trial = () => {
-//   console.log(google.maps);
-// };
-
 export default class MapComponent extends Component {
   constructor(props) {
     super(props);
@@ -72,7 +68,6 @@ export default class MapComponent extends Component {
   };
 
   render() {
-    // trial();
     return (
       <div className="map-component" style={{ height: "100vh", width: "100%" }}>
         <GoogleMap
@@ -81,8 +76,9 @@ export default class MapComponent extends Component {
           center={this.props.mapOptions.center}
           // options={this.state.mapOptions.styles}
           onChange={this.handleClusterChange}
-          layerTypes={["TrafficLayer", "TransitLayer"]}
+          layerTypes={this.props.overlays}
           yesIWantToUseGoogleMapApiInternals
+          // onGoogleApiLoaded={this.onMapLoad}
         >
           {this.state.clusters.map((item, i) => {
             if (item.numPoints === 1) {
