@@ -66,8 +66,27 @@ export default class MapComponent extends Component {
       }
     );
   };
-
+  // componentWillUpdate() {
+  //   this.getGeoLocation();
+  // }
+  // getGeoLocation = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(position => {
+  //       // this.setState({
+  //       //   mapOptions: {
+  //       //     center: { lat: position.coords.lat, lng: position.coords.lng }
+  //       //   },
+  //       //   zoom: 19
+  //       // });
+  //       console.log("here", position.coords);
+  //     });
+  //   } else {
+  //     //   error => console.log(error);
+  //   }
+  // };
   render() {
+    // navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords));
+
     return (
       <div className="map-component" style={{ height: "100vh", width: "100%" }}>
         <GoogleMap

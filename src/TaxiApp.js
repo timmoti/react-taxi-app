@@ -2,13 +2,9 @@
 
 import React, { Component } from "react";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import MapComponent from "./MapComponent";
 import TopBar from "./TopBar";
 import "./App.css";
-import MapComponent from "./MapComponent";
-
-function trial() {
-  console.log("this is", navigator.geolocation);
-}
 
 class TaxiApp extends Component {
   constructor(props) {
@@ -63,8 +59,32 @@ class TaxiApp extends Component {
     }
   };
 
+  // to find own location
+  componentDidMount() {
+    this.getGeoLocation();
+  }
+  getGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.setState({
+          mapOptions: {
+            center: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            },
+            zoom: 17
+          }
+        });
+      });
+    } else {
+      //   error => console.log(error);
+    }
+  };
+
   render() {
-    trial();
+    // console.log("here", this.state.mapOptions.center);
+    // console.log(navigator.geolocation.getCurrentPosition);
+    // navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords));
     return (
       <div className="App">
         <TopBar
