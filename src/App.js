@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-// import MyMap from './MyMap';
-// import AnotherMap from './AnotherMap';
-import LocationSearchInput from "./LocationSearchInput";
+// import { GoogleApiWrapper } from "google-maps-react";
+import TopBar from "./TopBar";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <MyMap /> */}
-        {/* <AnotherMap /> */}
-        <LocationSearchInput />
+        <TopBar />
       </div>
     );
   }
 }
-
 export default App;
+// export default GoogleApiWrapper({
+//   apiKey: `AIzaSyD8ZaxmbQDYlVW1GfzJn_n3Syt3cm-AdPA`
+// })(App);

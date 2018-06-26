@@ -3,13 +3,13 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+// import { GoogleApiWrapper } from "google-maps-react";
 import MapComponent from "./MapComponent";
 
-// TODO:
-// places api
-// confine search to only singapore
-// Zoom in to searched location
-// find own location based on gps
+const searchOptions = {
+  types: ["address"],
+  componentRestrictions: { country: "sg" }
+};
 
 export default class LocationSearchInput extends Component {
   constructor(props) {
@@ -30,8 +30,12 @@ export default class LocationSearchInput extends Component {
 
   handleSelect = address => {
     geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
+      .then(results => {
+        console.log("results", results[0]);
+        return getLatLng(results[0]);
+      })
       .then(latLng => {
+        console.log("latlng", latLng);
         this.setState({
           bSearched: true,
           mapOptions: {
@@ -39,20 +43,19 @@ export default class LocationSearchInput extends Component {
             zoom: 17
           }
         });
-        console.log("Success in search", this.state.mapOptions.center);
       })
       .catch(error => console.error("Error in search", error));
   };
 
   render() {
-    console.log("Within location search, zoom is", this.state.mapOptions.zoom);
-
+    // console.log("here==", this.props.google.maps.getLatLng(1.35, 103.82));
     return (
       <div>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
           onSelect={this.handleSelect}
+          searchOptions={searchOptions}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps }) => (
             <div>
@@ -69,8 +72,8 @@ export default class LocationSearchInput extends Component {
                     : "suggestion-item";
                   // inline style for demonstration purpose
                   const style = suggestion.active
-                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                    : { backgroundColor: "#ffffff", cursor: "pointer" };
+                    ? { backgroundColor: "#fafafa" }
+                    : { backgroundColor: "#ffffff" };
                   return (
                     <div
                       {...getSuggestionItemProps(suggestion, {
@@ -95,3 +98,6 @@ export default class LocationSearchInput extends Component {
     );
   }
 }
+// export default GoogleApiWrapper({
+//   apiKey: `AIzaSyD8ZaxmbQDYlVW1GfzJn_n3Syt3cm-AdPA`
+// })(LocationSearchInput);

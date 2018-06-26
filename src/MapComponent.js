@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import GoogleMap from "google-map-react";
 import supercluster from "points-cluster";
-// import supercluster from "supercluster";
+// import { GoogleApiWrapper } from "google-maps-react";
 import MarkerSimple from "./MarkerSimple";
 import MarkerCluster from "./MarkerCluster";
 import MarkerHere from "./MarkerHere";
+
+// const trial = () => {
+//   console.log(google.maps);
+// };
 
 export default class MapComponent extends Component {
   constructor(props) {
@@ -18,9 +22,9 @@ export default class MapComponent extends Component {
 
   async componentDidMount() {
     const uri = "https://api.data.gov.sg/v1/transport/taxi-availability";
-    let response = await fetch(uri);
-    let data = await response.json();
-    let allTaxiCoordGeo = data.features[0].geometry.coordinates.map(coord => {
+    const response = await fetch(uri);
+    const data = await response.json();
+    const allTaxiCoordGeo = data.features[0].geometry.coordinates.map(coord => {
       return { lng: coord[0], lat: coord[1] };
     });
     this.setState({
@@ -68,15 +72,16 @@ export default class MapComponent extends Component {
   };
 
   render() {
+    // trial();
     return (
-      <div style={{ height: "100vh", width: "100%" }}>
-        {console.log("zoom is", this.props.mapOptions.zoom)}
-
+      <div className="map-component" style={{ height: "100vh", width: "100%" }}>
         <GoogleMap
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
           zoom={this.props.mapOptions.zoom}
           center={this.props.mapOptions.center}
           // options={this.state.mapOptions.styles}
           onChange={this.handleClusterChange}
+          layerTypes={["TrafficLayer", "TransitLayer"]}
           yesIWantToUseGoogleMapApiInternals
         >
           {this.state.clusters.map((item, i) => {
@@ -103,3 +108,6 @@ export default class MapComponent extends Component {
     );
   }
 }
+// export default GoogleApiWrapper({
+//   apiKey: `AIzaSyD8ZaxmbQDYlVW1GfzJn_n3Syt3cm-AdPA`
+// })(MapComponent);
