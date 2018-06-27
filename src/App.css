@@ -16,7 +16,7 @@
   margin: 0;
   padding: 0;
 }
-.marker-here {
+.marker-searched-here {
   background-image: url('./markerHere.png');
   background-repeat: no-repeat;
   position: absolute;
@@ -81,4 +81,3 @@
   /* grid-column-start: 1;
   grid-column-end: 3; */
 }
-

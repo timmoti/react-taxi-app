@@ -4,7 +4,8 @@ import supercluster from "points-cluster";
 // import { GoogleApiWrapper } from "google-maps-react";
 import MarkerSimple from "./MarkerSimple";
 import MarkerCluster from "./MarkerCluster";
-import MarkerHere from "./MarkerHere";
+import MarkerSearchedHere from "./MarkerSearchedHere";
+// import MarkerUserHere from "./MarkerUserHere";
 
 export default class MapComponent extends Component {
   constructor(props) {
@@ -66,27 +67,8 @@ export default class MapComponent extends Component {
       }
     );
   };
-  // componentWillUpdate() {
-  //   this.getGeoLocation();
-  // }
-  // getGeoLocation = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(position => {
-  //       // this.setState({
-  //       //   mapOptions: {
-  //       //     center: { lat: position.coords.lat, lng: position.coords.lng }
-  //       //   },
-  //       //   zoom: 19
-  //       // });
-  //       console.log("here", position.coords);
-  //     });
-  //   } else {
-  //     //   error => console.log(error);
-  //   }
-  // };
-  render() {
-    // navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords));
 
+  render() {
     return (
       <div className="map-component" style={{ height: "100vh", width: "100%" }}>
         <GoogleMap
@@ -113,11 +95,17 @@ export default class MapComponent extends Component {
             );
           })}
 
-          <MarkerHere
+          <MarkerSearchedHere
             lat={this.props.mapOptions.center.lat}
             lng={this.props.mapOptions.center.lng}
             bSearched={this.props.bSearched}
           />
+
+          {/* <MarkerUserHere
+            bUserFound={this.props.bUserFound}
+            lat={this.props.mapOptions.center.lat}
+            lng={this.props.mapOptions.center.lng}
+          /> */}
         </GoogleMap>
       </div>
     );

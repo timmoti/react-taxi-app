@@ -60,26 +60,26 @@ class TaxiApp extends Component {
   };
 
   // to find own location
-  componentDidMount() {
-    this.getGeoLocation();
-  }
-  getGeoLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.setState({
-          mapOptions: {
-            center: {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            },
-            zoom: 17
-          }
-        });
-      });
-    } else {
-      //   error => console.log(error);
-    }
-  };
+  // componentDidMount() {
+  //   this.getGeoLocation();
+  // }
+  // getGeoLocation = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(position => {
+  //       this.setState({
+  //         mapOptions: {
+  //           center: {
+  //             lat: position.coords.latitude,
+  //             lng: position.coords.longitude
+  //           },
+  //           zoom: 17
+  //         }
+  //       });
+  //     });
+  //   } else {
+  //     //   error => console.log(error);
+  //   }
+  // };
 
   render() {
     // console.log("here", this.state.mapOptions.center);
