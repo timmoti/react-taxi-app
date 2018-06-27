@@ -13,6 +13,7 @@ class TaxiApp extends Component {
       address: "",
       bSearched: false,
       bUserFound: false,
+      userLocation: {},
       mapOptions: {
         center: { lat: 1.35, lng: 103.82 },
         zoom: 12
@@ -69,6 +70,10 @@ class TaxiApp extends Component {
       navigator.geolocation.getCurrentPosition(position => {
         this.setState({
           bUserFound: true,
+          userLocation: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          },
           mapOptions: {
             center: {
               lat: position.coords.latitude,
@@ -97,6 +102,7 @@ class TaxiApp extends Component {
           mapOptions={this.state.mapOptions}
           bSearched={this.state.bSearched}
           bUserFound={this.state.bUserFound}
+          userLocation={this.state.userLocation}
           showOverlay={this.state.showOverlay}
           overlays={this.state.overlays}
         />

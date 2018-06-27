@@ -68,6 +68,7 @@ export default class MapComponent extends Component {
   };
 
   render() {
+    console.log("user location", this.props.userLocation.lat);
     return (
       <div className="map-component" style={{ height: "100vh", width: "100%" }}>
         <GoogleMap
@@ -102,8 +103,8 @@ export default class MapComponent extends Component {
 
           <MarkerUserHere
             bUserFound={this.props.bUserFound}
-            lat={this.props.mapOptions.center.lat}
-            lng={this.props.mapOptions.center.lng}
+            lat={this.props.userLocation.lat}
+            lng={this.props.userLocation.lng}
           />
         </GoogleMap>
       </div>
