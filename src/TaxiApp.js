@@ -30,7 +30,9 @@ class TaxiApp extends Component {
     return (
       <div className="taxi-app">
         <MapComponent {...this.state} />
+
         <div className="taxi-app-sidebar">
+          {/* Search Box */}
           <input
             className="taxi-app-searchbox"
             ref="input"
@@ -48,8 +50,6 @@ class TaxiApp extends Component {
             handleRecentre={this.getGeoLocation}
           />
         </div>
-
-        {/* Search Box */}
       </div>
     );
   }
@@ -94,10 +94,19 @@ class TaxiApp extends Component {
   //   onPlacesChanged: PropTypes.func
   // };
   onPlacesChanged = () => {
-    console.log(this.searchBox.getPlace());
-    if (this.props.onPlacesChanged) {
-      this.props.onPlacesChanged(this.searchBox.getPlace());
-    }
+    const lat = this.searchBox.getPlace().geometry.location.lat();
+    const lng = this.searchBox.getPlace().geometry.location.lng();
+    this.setState({
+      bSearched: true,
+      searchedLocation: {
+        lat: lat,
+        lng: lng
+      },
+      mapOptions: {
+        center: { lat: lat, lng: lng },
+        zoom: 17
+      }
+    });
   };
 
   // componentWillUnmount() {

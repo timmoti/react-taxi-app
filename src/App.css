@@ -63,18 +63,16 @@
   border-radius: 50%; 
   transform: translate(-50%, -50%);
 }
+.taxi-app-sidebar {
+  background: beige;
+  border-left: 3px double brown;
+  font-family: sans-serif;
+}
 .taxi-app-searchbox {
   height: 20px;
   width: 80%;
   margin: 20px auto;
   font-size: 15px;
-}
-.sidebar {
-  grid-column: 2/3;
-  background: beige;
-  border-left: 3px double brown;
-  height: 100%;
-  font-family: sans-serif;
 }
 .sidebar-locations {
   display: grid;
