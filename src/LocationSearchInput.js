@@ -1,6 +1,5 @@
 import React from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
-// import { GoogleApiWrapper } from "google-maps-react";
 
 const searchOptions = {
   types: ["address"],
@@ -51,6 +50,3 @@ const LocationSearchInput = props => (
 );
 
 export default LocationSearchInput;
-// export default GoogleApiWrapper({
-//   apiKey: `AIzaSyD8ZaxmbQDYlVW1GfzJn_n3Syt3cm-AdPA`
-// })(LocationSearchInput);

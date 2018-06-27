@@ -28,7 +28,7 @@ export default class MapComponent extends Component {
       allTaxiCoordinates: allTaxiCoordGeo
     });
   }
-
+  // Cluster taxis if they are within a certain radius in pixels
   getClusters = () => {
     const clusters = supercluster(this.state.allTaxiCoordinates, {
       minZoom: 0,
@@ -68,18 +68,24 @@ export default class MapComponent extends Component {
   };
 
   render() {
-    console.log("user location", this.props.userLocation.lat);
+    if (this.props.loading) {
+      return (
+        <img
+          className="map-component-loading-screen"
+          alt="loading-screen"
+          src={"loading.gif"}
+        />
+      );
+    }
     return (
       <div className="map-component" style={{ height: "100vh", width: "100%" }}>
         <GoogleMap
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
           zoom={this.props.mapOptions.zoom}
           center={this.props.mapOptions.center}
-          // options={this.state.mapOptions.styles}
           onChange={this.handleClusterChange}
           layerTypes={this.props.overlays}
           yesIWantToUseGoogleMapApiInternals
-          // onGoogleApiLoaded={this.onMapLoad}
         >
           {this.state.clusters.map((item, i) => {
             if (item.numPoints === 1) {
@@ -94,10 +100,9 @@ export default class MapComponent extends Component {
               />
             );
           })}
-
           <MarkerSearchedHere
-            lat={this.props.mapOptions.center.lat}
-            lng={this.props.mapOptions.center.lng}
+            lat={this.props.searchedLocation.lat}
+            lng={this.props.searchedLocation.lng}
             bSearched={this.props.bSearched}
           />
 
@@ -111,6 +116,3 @@ export default class MapComponent extends Component {
     );
   }
 }
-// export default GoogleApiWrapper({
-//   apiKey: `AIzaSyD8ZaxmbQDYlVW1GfzJn_n3Syt3cm-AdPA`
-// })(MapComponent);

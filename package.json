@@ -7,6 +7,7 @@
     "google-map-react": "^1.0.4",
     "kotatsu": "^0.15.2",
     "points-cluster": "^0.1.4",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-places-autocomplete": "^7.1.2",

@@ -1,9 +1,5 @@
 import React from "react";
 
-const MarkerSimple = () => (
-  <div>
-    <div className="marker-simple" />
-  </div>
-);
+const MarkerSimple = () => <div className="marker-simple" />;
 
 export default MarkerSimple;

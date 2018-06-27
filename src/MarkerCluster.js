@@ -1,9 +1,7 @@
 import React from "react";
 
 const MarkerCluster = props => (
-  <div>
-    <div className="marker-cluster">{props.text}</div>
-  </div>
+  <div className="marker-cluster">{props.text}</div>
 );
 
 export default MarkerCluster;
