@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import GoogleMap from "google-map-react";
 import supercluster from "points-cluster";
-// import { GoogleApiWrapper } from "google-maps-react";
 import MarkerSimple from "./MarkerSimple";
 import MarkerCluster from "./MarkerCluster";
 import MarkerSearchedHere from "./MarkerSearchedHere";
-// import MarkerUserHere from "./MarkerUserHere";
+import MarkerUserHere from "./MarkerUserHere";
 
 export default class MapComponent extends Component {
   constructor(props) {
@@ -101,11 +100,11 @@ export default class MapComponent extends Component {
             bSearched={this.props.bSearched}
           />
 
-          {/* <MarkerUserHere
+          <MarkerUserHere
             bUserFound={this.props.bUserFound}
             lat={this.props.mapOptions.center.lat}
             lng={this.props.mapOptions.center.lng}
-          /> */}
+          />
         </GoogleMap>
       </div>
     );

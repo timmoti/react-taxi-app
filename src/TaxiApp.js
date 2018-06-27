@@ -12,6 +12,7 @@ class TaxiApp extends Component {
     this.state = {
       address: "",
       bSearched: false,
+      bUserFound: false,
       mapOptions: {
         center: { lat: 1.35, lng: 103.82 },
         zoom: 12
@@ -59,32 +60,28 @@ class TaxiApp extends Component {
     }
   };
 
-  // to find own location
-  // componentDidMount() {
-  //   this.getGeoLocation();
-  // }
-  // getGeoLocation = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(position => {
-  //       this.setState({
-  //         mapOptions: {
-  //           center: {
-  //             lat: position.coords.latitude,
-  //             lng: position.coords.longitude
-  //           },
-  //           zoom: 17
-  //         }
-  //       });
-  //     });
-  //   } else {
-  //     //   error => console.log(error);
-  //   }
-  // };
+  //to find a user's location
+  componentDidMount() {
+    this.getGeoLocation();
+  }
+  getGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.setState({
+          bUserFound: true,
+          mapOptions: {
+            center: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            },
+            zoom: 17
+          }
+        });
+      });
+    }
+  };
 
   render() {
-    // console.log("here", this.state.mapOptions.center);
-    // console.log(navigator.geolocation.getCurrentPosition);
-    // navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords));
     return (
       <div className="App">
         <TopBar
@@ -99,6 +96,7 @@ class TaxiApp extends Component {
         <MapComponent
           mapOptions={this.state.mapOptions}
           bSearched={this.state.bSearched}
+          bUserFound={this.state.bUserFound}
           showOverlay={this.state.showOverlay}
           overlays={this.state.overlays}
         />
