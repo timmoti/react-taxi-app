@@ -3,7 +3,7 @@ import MapComponent from "./MapComponent";
 import Sidebar from "./Sidebar";
 import "./App.css";
 
-class TaxiApp extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -122,4 +122,4 @@ class TaxiApp extends Component {
     });
   };
 }
-export default TaxiApp;
+export default App;
