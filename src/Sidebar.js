@@ -12,7 +12,7 @@ class TopBar extends Component {
         />
         <div className="sidebar-locations">
           <img
-            src={"./mylocation.png"}
+            src={"./myLocation.png"}
             alt="my-location"
             className="sidebar-btn"
             onClick={this.props.handleRecentre}
