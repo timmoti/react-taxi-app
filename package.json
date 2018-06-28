@@ -2,7 +2,6 @@
   "name": "react-google-map",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zhaoyanxie.github.io/react-taxi-mana/",
   "dependencies": {
     "google-map-react": "^1.0.4",
     "points-cluster": "^0.1.4",
