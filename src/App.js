@@ -1,5 +1,3 @@
-/* global google */
-
 import React, { Component } from "react";
 import MapComponent from "./MapComponent";
 import Sidebar from "./Sidebar";
@@ -73,7 +71,7 @@ class TaxiApp extends Component {
   //to find a user's location
   getGeoLocation = () => {
     this.setState({ loading: true });
-    navigator.geolocation.watchPosition(
+    navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
           loading: false,
@@ -92,7 +90,7 @@ class TaxiApp extends Component {
         });
       },
       error => {
-        console.log("Permission error", error);
+        console.log("Location error", error);
         this.setState({ loading: false });
       }
     );
@@ -101,7 +99,7 @@ class TaxiApp extends Component {
   // Searchbox with autocomplete
   handleSearch = () => {
     const input = this.refs.input;
-    this.searchBox = new google.maps.places.Autocomplete(input, {
+    this.searchBox = new window.google.maps.places.Autocomplete(input, {
       componentRestrictions: { country: "sg" }
     });
     this.searchBox.addListener("place_changed", this.onPlacesChanged);
