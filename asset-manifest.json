@@ -1,7 +1,8 @@
 {
-  "main.css": "static/css/main.43781f9e.css",
-  "main.css.map": "static/css/main.43781f9e.css.map",
-  "main.js": "static/js/main.620f7f68.js",
-  "main.js.map": "static/js/main.620f7f68.js.map",
-  "static/media/simpleMarker.svg": "static/media/simpleMarker.559252fb.svg"
+  "main.css": "static/css/main.93e75632.css",
+  "main.css.map": "static/css/main.93e75632.css.map",
+  "main.js": "static/js/main.19e14272.js",
+  "main.js.map": "static/js/main.19e14272.js.map",
+  "static/media/markerHere.png": "static/media/markerHere.1d0e156d.png",
+  "static/media/markerSimple.svg": "static/media/markerSimple.559252fb.svg"
 }
