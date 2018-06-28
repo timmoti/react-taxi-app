@@ -16,7 +16,7 @@ See the demo here: [https://react-taxi-app.netlify.com/](https://react-taxi-app.
 First, `git clone https://github.com/zhaoyanxie/react-taxi-app.git`,
 then `npm install` to install the necessary dependencies.
 
-Deployement
+Deployment
 ------
 Go to [netlify](https://app.netlify.com/) and follow the steps in [netlify Continuous Deployment](https://www.netlify.com/docs/continuous-deployment/).
 
