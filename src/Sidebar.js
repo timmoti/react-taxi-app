@@ -17,7 +17,7 @@ class TopBar extends Component {
             className="sidebar-btn"
             onClick={this.props.handleRecentre}
           />
-          Find My Location
+          <p>Find My Location</p>
         </div>
       </div>
     );
