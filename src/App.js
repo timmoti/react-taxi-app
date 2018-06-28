@@ -72,10 +72,9 @@ class TaxiApp extends Component {
 
   //to find a user's location
   getGeoLocation = () => {
-    if (navigator.geolocation) {
-      this.setState({ loading: true });
-
-      navigator.geolocation.getCurrentPosition(position => {
+    this.setState({ loading: true });
+    navigator.geolocation.watchPosition(
+      position => {
         this.setState({
           loading: false,
           bUserFound: true,
@@ -91,8 +90,12 @@ class TaxiApp extends Component {
             zoom: 17
           }
         });
-      });
-    }
+      },
+      error => {
+        console.log("Permission error", error);
+        this.setState({ loading: false });
+      }
+    );
   };
 
   // Searchbox with autocomplete
