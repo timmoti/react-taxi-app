@@ -1,7 +1,7 @@
 import React from "react";
 
 const MarkerSearchedHere = props => {
-  if (props.bSearched) return <div className="marker-searched-here" />;
+  if (props.bSearched) return <div className="marker marker-searched-here" />;
   return <div />;
 };
 

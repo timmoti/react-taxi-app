@@ -15,7 +15,6 @@ export default class MapComponent extends Component {
       clusters: [],
       mapOptions: props.mapOptions
     };
-    this.fetchData = this.fetchData.bind(this);
   }
 
   render() {
@@ -71,7 +70,7 @@ export default class MapComponent extends Component {
     setInterval(this.fetchData, 3000);
   }
 
-  async fetchData() {
+  fetchData = async () => {
     const url = "https://api.data.gov.sg/v1/transport/taxi-availability";
     const response = await fetch(url);
     const data = await response.json();
@@ -82,9 +81,8 @@ export default class MapComponent extends Component {
       taxiCount: data.features[0].properties.taxi_count,
       allTaxiCoordinates: allTaxiCoordGeo
     });
-    console.log("taxi count from state:", this.state.taxiCount);
     this.handleClusterChange(this.state.mapOptions);
-  }
+  };
 
   // Cluster taxis if they are within a certain radius in pixels
   getClusters = () => {
@@ -111,7 +109,6 @@ export default class MapComponent extends Component {
   };
 
   handleClusterChange = props => {
-    // console.log("handleClusterchange called");
     this.setState(
       {
         mapOptions: {

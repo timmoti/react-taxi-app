@@ -9,7 +9,7 @@ const OverlayForm = props => (
         checked={props.showOverlay.traffic}
         onChange={props.handleTrafficCheckBoxChange}
       />
-      Real-Time Traffic
+      <p>Real-Time Traffic</p>
     </label>
   </form>
 );

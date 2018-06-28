@@ -11,8 +11,7 @@
     "react-dom": "^16.4.1",
     "react-places-autocomplete": "^7.1.2",
     "react-scripts": "1.1.4",
-    "serve": "^9.1.0",
-    "supercluster": "^4.0.1"
+    "serve": "^9.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",

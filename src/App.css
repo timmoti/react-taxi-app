@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 .taxi-app {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -5,129 +9,138 @@
   background: rgb(26, 31, 37);
   font-family: 'sans-serif';
 }
+.map-component-loading-screen {
+  margin: 0;
+  width: 100%;
+}
 .taxi-app-sidebar {
-  background: beige;
+  background: rgb(3, 30, 82);
   border-left: 3px double brown;
   font-family: sans-serif;
 }
-.taxi-app-searchbox {
-  height: 20px;
-  width: 80%;
-  margin: 20px auto;
-  font-size: 15px;
-}
-.sidebar-locations {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  padding: 0; 
 
-}
-.autocomplete-dropdown-container {
-  cursor: pointer;
+.taxi-app-searchbox {
+  height: 30px;
+  width: 300px;
+  margin: 20px;
+  padding: 5px 10px;
+  font-size: 20px;
 }
 .overlay-form {
   color: black;
   vertical-align: middle;
   margin: 20px 20px;
-  grid-column: 1/3;
 }
-
-
-
-.topbar-btn {
+.overlay-form input[type=checkbox] {
+  transform: scale(2);
+}
+.overlay-form p {
+  display: inline;
+  margin-left: 20px;
+  color: #FFF;
+}
+.sidebar-locations {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  padding: 0; 
+  color: #fff;
+}
+.sidebar-btn {
   background-color: white;
-  border: 1px solid brown;
+  border: 1px solid grey;
   cursor: pointer;
   width: 20px;
-  height: 20px;
+  height: 20  px;
   border-radius: 25%;
   font-family: Arial;
-  color: #ffffff;
-  /* font-size: 20px; */
-  padding: 10px 10px 10px 10px;
+  color: #fff;
   text-decoration: none;
   margin: 0 auto;
 }
-.topbar-btn:hover {
-  background-color: green;
-}
-.map-component-loading-screen {
-  margin: 0;
-  width: 100%;
-}
-/* .sidebar-searchbox {
-  height: 100px;
-  background: white;
-} */
-.sidebar-searchbox {
-  padding: 0 5px;
-  margin: 0 auto;
-  font-size: 15px;
-  width: 80%;
-  height: 42px;
-  border: none;
-}
-.sidebar-searchbox:focus {
-  outline: none;
+.sidebar-btn:hover {
+  background-color: #7C6500;
 }
 
-
-
-.marker-simple {
-  background-image: url('./images/markerSimple.svg');
+.marker {
   background-repeat: no-repeat;
   position: absolute;
   cursor: pointer;
   background-size: contain;
+  margin: 0;
+  padding: 0;
+  transition: all ease 1s;
+  transition-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+.marker-simple {
+  background-image: url('./images/markerSimple.svg');
   width: 50px;
   height: 50px;
   transform: translate(-50%, -70%);
-  margin: 0;
-  padding: 0;
+  transform-origin: 0px 50px;
 }
 .marker-searched-here {
   background-image: url('./images/markerHere.png');
-  background-repeat: no-repeat;
-  position: absolute;
-  cursor: pointer;
-  background-size: contain;
   width: 49px;
   height: 64px;
   top: -49px;
   left: -32px;
   transform-origin: 32px 49px;
-  margin: 0;
-  padding: 0;
 }
 .marker-user-here {
   background-image: url('./images/markerHuman.png');
-  background-repeat: no-repeat;
-  position: absolute;
-  cursor: pointer;
-  background-size: contain;
   width: 40px;
   height: 50px;
   top: -40px;
   left: -25px;
   transform-origin: 25px 40px;
-  margin: 0;
-  padding: 0;
 }
 .marker-cluster {
-  position: absolute;
-  cursor: pointer;
   width: 40px;
   height: 40px;
   color: black;
   font-size: 18px;
   background: white;
   border: 5px solid #004336;
-  padding: none;
-  margin: none;
   display: inline-flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   border-radius: 50%; 
   transform: translate(-50%, -50%);
+
+}
+@media only screen and (max-width: 900px) {
+  .taxi-app {
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr auto;
+  }
+  .taxi-app-searchbox {
+    width: 70%;
+    height: 20px;
+    margin: 10px;
+  }
+  .taxi-app-sidebar {
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border: none;
+    border-bottom: 3px double brown;
+  }
+  .sidebar-locations {
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+  .sidebar-btn {
+    height: 14px;
+    width: 14px;
+  }
+  .overlay-form {
+    margin: 5px 10px;
+  }
+  .overlay-form input[type=checkbox] {
+    transform: scale(1.3);
+  }
+  .overlay-form p {
+    margin-left: 8px;
+  }
 }
