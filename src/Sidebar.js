@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import LocationSearchInput from "./LocationSearchInput";
 import OverlayForm from "./OverlayForm";
 
 class TopBar extends Component {
-  // let input = React.createRef();
   render() {
     return (
       <div className="sidebar">
@@ -18,13 +16,6 @@ class TopBar extends Component {
             alt="my-location"
             className="topbar-btn"
             onClick={this.props.handleRecentre}
-          />
-          <LocationSearchInput
-            address={this.props.address}
-            bSearched={this.props.bSearched}
-            mapOptions={this.props.mapOptions}
-            handleSearchChange={this.props.handleSearchChange}
-            handleSearchSelect={this.props.handleSearchSelect}
           />
         </div>
       </div>

@@ -5,64 +5,6 @@
   background: rgb(26, 31, 37);
   font-family: 'sans-serif';
 }
-.marker-simple {
-  background-image: url('./images/markerSimple.svg');
-  background-repeat: no-repeat;
-  position: absolute;
-  cursor: pointer;
-  background-size: contain;
-  width: 50px;
-  height: 50px;
-  transform: translate(-50%, -70%);
-  margin: 0;
-  padding: 0;
-}
-.marker-searched-here {
-  background-image: url('./images/markerHere.png');
-  background-repeat: no-repeat;
-  position: absolute;
-  cursor: pointer;
-  background-size: contain;
-  width: 49px;
-  height: 64px;
-  top: -49px;
-  left: -32px;
-  transform-origin: 32px 49px;
-  margin: 0;
-  padding: 0;
-}
-.marker-user-here {
-  background-image: url('./images/markerHuman.png');
-  background-repeat: no-repeat;
-  position: absolute;
-  cursor: pointer;
-  background-size: contain;
-  width: 40px;
-  height: 50px;
-  top: -40px;
-  left: -25px;
-  transform-origin: 25px 40px;
-  margin: 0;
-  padding: 0;
-}
-.marker-cluster {
-  position: absolute;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  color: black;
-  font-size: 18px;
-  background: white;
-  border: 5px solid #004336;
-  padding: none;
-  margin: none;
-  display: inline-flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%; 
-  transform: translate(-50%, -50%);
-}
 .taxi-app-sidebar {
   background: beige;
   border-left: 3px double brown;
@@ -127,4 +69,65 @@
 }
 .sidebar-searchbox:focus {
   outline: none;
+}
+
+
+
+.marker-simple {
+  background-image: url('./images/markerSimple.svg');
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -70%);
+  margin: 0;
+  padding: 0;
+}
+.marker-searched-here {
+  background-image: url('./images/markerHere.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+  background-size: contain;
+  width: 49px;
+  height: 64px;
+  top: -49px;
+  left: -32px;
+  transform-origin: 32px 49px;
+  margin: 0;
+  padding: 0;
+}
+.marker-user-here {
+  background-image: url('./images/markerHuman.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+  background-size: contain;
+  width: 40px;
+  height: 50px;
+  top: -40px;
+  left: -25px;
+  transform-origin: 25px 40px;
+  margin: 0;
+  padding: 0;
+}
+.marker-cluster {
+  position: absolute;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  color: black;
+  font-size: 18px;
+  background: white;
+  border: 5px solid #004336;
+  padding: none;
+  margin: none;
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; 
+  transform: translate(-50%, -50%);
 }

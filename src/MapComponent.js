@@ -12,60 +12,11 @@ export default class MapComponent extends Component {
     this.state = {
       taxiCount: null,
       allTaxiCoordinates: [],
-      clusters: []
+      clusters: [],
+      mapOptions: props.mapOptions
     };
+    this.fetchData = this.fetchData.bind(this);
   }
-
-  async componentDidMount() {
-    const uri = "https://api.data.gov.sg/v1/transport/taxi-availability";
-    const response = await fetch(uri);
-    const data = await response.json();
-    const allTaxiCoordGeo = data.features[0].geometry.coordinates.map(coord => {
-      return { lng: coord[0], lat: coord[1] };
-    });
-    this.setState({
-      taxiCount: data.features[0].properties.taxi_count,
-      allTaxiCoordinates: allTaxiCoordGeo
-    });
-  }
-  // Cluster taxis if they are within a certain radius in pixels
-  getClusters = () => {
-    const clusters = supercluster(this.state.allTaxiCoordinates, {
-      minZoom: 0,
-      maxZoom: 16,
-      radius: 120
-    });
-    return clusters(this.state.mapOptions);
-  };
-
-  createClusters = props => {
-    this.setState({
-      clusters: this.state.mapOptions.bounds
-        ? this.getClusters(props).map(({ wx, wy, numPoints, points }) => ({
-            lat: wy,
-            lng: wx,
-            numPoints,
-            id: `${numPoints}_${points[0].id}`,
-            points
-          }))
-        : []
-    });
-  };
-
-  handleClusterChange = ({ center, zoom, bounds }) => {
-    this.setState(
-      {
-        mapOptions: {
-          center,
-          zoom,
-          bounds
-        }
-      },
-      () => {
-        this.createClusters(this.props);
-      }
-    );
-  };
 
   render() {
     if (this.props.loading) {
@@ -105,7 +56,6 @@ export default class MapComponent extends Component {
             lng={this.props.searchedLocation.lng}
             bSearched={this.props.bSearched}
           />
-
           <MarkerUserHere
             bUserFound={this.props.bUserFound}
             lat={this.props.userLocation.lat}
@@ -115,4 +65,62 @@ export default class MapComponent extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    this.fetchData();
+    setInterval(this.fetchData, 3000);
+  }
+
+  async fetchData() {
+    const url = "https://api.data.gov.sg/v1/transport/taxi-availability";
+    const response = await fetch(url);
+    const data = await response.json();
+    const allTaxiCoordGeo = data.features[0].geometry.coordinates.map(coord => {
+      return { lng: coord[0], lat: coord[1] };
+    });
+    this.setState({
+      taxiCount: data.features[0].properties.taxi_count,
+      allTaxiCoordinates: allTaxiCoordGeo
+    });
+    console.log("taxi count from state:", this.state.taxiCount);
+    this.handleClusterChange(this.state.mapOptions);
+  }
+
+  // Cluster taxis if they are within a certain radius in pixels
+  getClusters = () => {
+    const clusters = supercluster(this.state.allTaxiCoordinates, {
+      minZoom: 0,
+      maxZoom: 16,
+      radius: 120
+    });
+    return clusters(this.state.mapOptions);
+  };
+
+  createClusters = props => {
+    this.setState({
+      clusters: this.state.mapOptions.bounds
+        ? this.getClusters(props).map(({ wx, wy, numPoints, points }) => ({
+            lat: wy,
+            lng: wx,
+            numPoints,
+            id: `${numPoints}_${points[0].id}`,
+            points
+          }))
+        : []
+    });
+  };
+
+  handleClusterChange = props => {
+    // console.log("handleClusterchange called");
+    this.setState(
+      {
+        mapOptions: {
+          center: props.center,
+          zoom: props.zoom,
+          bounds: props.bounds
+        }
+      },
+      () => this.createClusters(props)
+    );
+  };
 }
