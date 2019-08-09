@@ -6,7 +6,7 @@
     "google-map-react": "^1.0.4",
     "points-cluster": "^0.1.4",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "react-scripts": "1.1.4",
     "serve": "^9.1.0"
   },
