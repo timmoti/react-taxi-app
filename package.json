@@ -8,7 +8,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
-    "serve": "^9.1.0"
+    "serve": "^11.3.2"
   },
   "scripts": {
     "predeploy": "npm run build",
